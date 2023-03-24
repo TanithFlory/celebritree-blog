@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;700&display=swap");
+* {
+  font-family: "Signika Negative", sans-serif;
+  --fs-custom: 4rem;
+  --fs-xxl: 2.5rem;
+  --fs-xl: 2rem;
+  --fs-l: 1.5rem;
+  --fs-m: 1rem;
+  --fs-s: 0.75rem;
+  --fs-xs: 0.5rem;
+}
+:root {
+  background-color: black;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: white;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
