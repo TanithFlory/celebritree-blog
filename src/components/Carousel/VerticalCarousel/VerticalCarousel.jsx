@@ -1,29 +1,41 @@
 import dataz from "./Dummydata";
-import StyledDiv from "./Carousel.styles";
-import { useState } from "react";
+import SVerticalCarousel from "./Carousel.styles";
+import { useEffect, useState } from "react";
 import { FaChevronCircleUp, FaChevronCircleDown } from "react-icons/fa";
 
 const VerticalCarousel = () => {
   const [carouselRef, setCarouselRef] = useState();
 
-  const scrollDown = () => {
-    if (
-      carouselRef.offsetHeight + carouselRef.scrollTop >=
-      carouselRef.scrollHeight
-    ) {
-      return carouselRef.scrollTo(0, 0);
+  const scroll = (type) => {
+    if (type === "down") {
+      if (
+        carouselRef.offsetHeight + carouselRef.scrollTop >=
+        carouselRef.scrollHeight
+      ) {
+        return carouselRef.scrollTo(0, 0);
+      }
+      carouselRef.scrollBy({ top: 141, behavior: "smooth" });
+    } else {
+      if (Math.floor(carouselRef.scrollTop) === 0) {
+        return carouselRef.scrollTo(0, carouselRef.scrollHeight);
+      }
+      carouselRef.scrollBy({ top: -141, behavior: "smooth" });
     }
-    carouselRef.scrollBy({ top: 141, behavior: "smooth" });
   };
-  const scrollUp = () => {
-    if (Math.floor(carouselRef.scrollTop) === 0) {
-      return carouselRef.scrollTo(0, carouselRef.scrollHeight);
-    }
-    carouselRef.scrollBy({ top: -141, behavior: "smooth" });
-  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      scroll();
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [scroll]);
+
   return (
-    <StyledDiv>
-      <div className="buttons" onClick={scrollUp}>
+    <SVerticalCarousel>
+      <div className="buttons" onClick={() => scroll("up")}>
         <button className="up">
           <FaChevronCircleUp />
         </button>
@@ -41,12 +53,12 @@ const VerticalCarousel = () => {
           );
         })}
       </div>
-      <div className="buttons" onClick={scrollDown}>
+      <div className="buttons" onClick={() => scroll("down")}>
         <button className="down">
           <FaChevronCircleDown />
         </button>
       </div>
-    </StyledDiv>
+    </SVerticalCarousel>
   );
 };
 export default VerticalCarousel;

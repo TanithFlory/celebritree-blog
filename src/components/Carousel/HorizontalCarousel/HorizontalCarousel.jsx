@@ -6,7 +6,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: white;
+  color: var(--clr-white);
   height: 410px;
   img {
     height: 305px;
@@ -14,6 +14,10 @@ const StyledDiv = styled.div`
   }
   h3 {
     margin: 10px 0 0;
+  }
+  @media screen and (max-width: 911px) and (min-width: 550px) {
+    width: 60%;
+    margin: auto;
   }
 `;
 

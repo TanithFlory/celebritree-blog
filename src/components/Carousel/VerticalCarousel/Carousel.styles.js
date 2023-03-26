@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
+const SVerticalCarousel = styled.div`
   position: relative;
   .carousel {
     display: grid;
     justify-content: center;
     gap: 1rem;
-    color: white;
+    color: var(--clr-white);
     overflow-y: hidden;
     max-height: 423px;
     margin-top: 14px;
@@ -35,10 +35,16 @@ const StyledDiv = styled.div`
   .buttons {
     display: flex;
     justify-content: center;
+    background-image: linear-gradient(
+      90deg,
+      rgba(231, 54, 43, 0),
+      rgb(255, 255, 255) 50%,
+      rgba(255, 255, 255, 0)
+    );
     content: "";
     height: 4px;
     width: 100%;
-    background-color: white;
+    background-color: transparent;
     z-index: 10;
     max-width: 530px;
     margin: auto;
@@ -48,13 +54,13 @@ const StyledDiv = styled.div`
     }
     .up,
     .down {
-      background-color: black;
+      background-color: var(--clr-black);
       border: none;
       padding: 2px;
       cursor: pointer;
       svg {
         transform: scale(2);
-        fill: white;
+        fill: var(--clr-white);
       }
     }
     .up {
@@ -64,12 +70,17 @@ const StyledDiv = styled.div`
       bottom: -12px;
     }
     &:hover {
-      background-color: green;
+      background-image: linear-gradient(
+        90deg,
+        rgba(231, 54, 43, 0),
+        rgb(0 255 10) 50%,
+        rgba(255, 255, 255, 0)
+      );
       svg {
-        fill: green;
+        fill: var(--clr-green);
       }
     }
   }
 `;
 
-export default StyledDiv;
+export default SVerticalCarousel;

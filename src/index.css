@@ -8,11 +8,21 @@
   --fs-m: 1rem;
   --fs-s: 0.75rem;
   --fs-xs: 0.5rem;
+  --clr-white: #fff;
+  --clr-black: #000000;
+  --clr-green: #00f60a;
+  --clr-orange: #ff6c37;
+  --gradient-bl-or: linear-gradient(
+    90deg,
+    rgba(1, 1, 255),
+    rgb(255, 108, 55) 50%,
+    rgba(1, 1, 255)
+  );
+  color: var(--clr-white);
 }
 :root {
   background-color: black;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: white;
 }
 html,
 body {
