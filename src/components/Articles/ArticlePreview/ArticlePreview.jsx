@@ -9,8 +9,9 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 const ArticlePreview = () => {
-  const { title } = useParams();
+  const { title, tag } = useParams();
   const [article, setArticle] = useState();
+  const [highlights, setHighlights] = useState();
   useEffect(() => {
     const controller = new AbortController();
     (async () => {
@@ -19,9 +20,11 @@ const ArticlePreview = () => {
         url: "http://localhost:3001/posts/article-preview",
         params: {
           title: title?.replace(/[-]+/g, " "),
+          tag,
         },
         signal: controller.signal,
       });
+      setHighlights(response.data.highlights);
       const sanitizedArticle = DOMPurify.sanitize(response.data.content);
       setArticle(sanitizedArticle);
     })();
@@ -34,13 +37,12 @@ const ArticlePreview = () => {
     <SArticlePreview>
       <div>img</div>
       <div>
-        <ArticleHighlights />
+        <ArticleHighlights highlights={highlights} />
         <div className="article__content">
           {parse(article === undefined ? " " : article)}
-          <Pagebreak />
+          <Pagebreak margin="0 0 3rem" />
         </div>
         <Introduction />
-        <Pagebreak margin="3rem 0"/>
       </div>
     </SArticlePreview>
   );

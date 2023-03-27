@@ -28,6 +28,14 @@ const StyledDiv = styled.div`
       grid-template-columns: 1fr;
       margin-top: 0;
     }
+    .carousel {
+      img {
+        max-width: 125px;
+      }
+      div {
+        height: 123px;
+      }
+    }
   }
 `;
 
@@ -39,7 +47,7 @@ const Home = () => {
         <HorizontalCarousel />
         <VerticalCarousel />
       </div>
-      <Pagebreak margin="3rem 0 2rem"/>
+      <Pagebreak margin="3rem 0 2rem" />
       <ArticleNavigation />
     </StyledDiv>
   );

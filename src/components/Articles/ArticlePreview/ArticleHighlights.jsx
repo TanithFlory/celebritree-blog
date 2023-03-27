@@ -55,27 +55,15 @@ const ArticleHighlights = (props) => {
           <div>Highlights</div>
         </span>
       </div>
-      <div>
-        <MdOutlineHighlight />
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. {props.highlight1}
-        </span>
-      </div>
-      <div>
-        <MdOutlineHighlight />
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. {props.highlight2}
-        </span>
-      </div>
-      <div>
-        <MdOutlineHighlight />
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. {props.highlight3}
-        </span>
-      </div>
+      {props?.highlights?.map((data, index) => {
+        return (
+          <div key={`highlight-${index}`}>
+            <MdOutlineHighlight />
+            <span>{data}</span>
+          </div>
+        );
+      })}
+
       <div />
     </SArticleHighlights>
   );

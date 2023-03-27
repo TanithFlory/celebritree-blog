@@ -12,9 +12,12 @@ const StyledDiv = styled.div`
     height: 305px;
     width: 100%;
   }
-  h3 {
+  h3,
+  p {
     margin: 10px 0 0;
+    text-align: center;
   }
+  
   @media screen and (max-width: 911px) and (min-width: 550px) {
     width: 60%;
     margin: auto;

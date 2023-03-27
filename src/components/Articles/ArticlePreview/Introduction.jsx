@@ -8,7 +8,7 @@ const SIntroduction = styled.div`
   display: flex;
   align-items: center;
   p {
-    padding: 20px 50px;
+    padding: 30px 50px;
     font-size: var(--fs-m);
     font-weight: 100;
     text-align: center;

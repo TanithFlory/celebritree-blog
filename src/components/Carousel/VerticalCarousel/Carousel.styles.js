@@ -13,8 +13,8 @@ const SVerticalCarousel = styled.div`
     position: relative;
     scroll-behavior: smooth;
     img {
-      height: 125px;
-      width: 200px;
+      max-height: 125px;
+      max-width: 200px;
     }
     h3 {
       margin: 10px 0 0;

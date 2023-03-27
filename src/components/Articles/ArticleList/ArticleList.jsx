@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const ArticleList = (props) => {
-  const [articleData, setArticleData] = useState();
+  const [articleData, setArticleData] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -17,7 +17,8 @@ const ArticleList = (props) => {
         },
         signal: controller.signal,
       });
-      setArticleData(response);
+      console.log(response);
+      setArticleData(response.data?.items);
     })();
     return () => {
       controller.abort();
@@ -25,11 +26,13 @@ const ArticleList = (props) => {
   }, [props.list]);
   return (
     <SArticle>
-      {/* {articleData?.map((data) => {
+      {articleData?.map((data) => {
         return (
           <Link
             key={data.id}
-            to={`articles/${data.title.replace(/[\s]+/g, "-").toLowerCase()}`}
+            to={`articles/${props.list}/${data.title
+              .replace(/[\s]+/g, "-")
+              .toLowerCase()}`}
           >
             <div className="article__card">
               <div>
@@ -43,11 +46,9 @@ const ArticleList = (props) => {
             </div>
           </Link>
         );
-      })} */}
+      })}
     </SArticle>
   );
 };
 
 export default ArticleList;
-
-
