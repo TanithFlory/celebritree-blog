@@ -45,7 +45,6 @@ const SVerticalCarousel = styled.div`
     height: 4px;
     width: 100%;
     background-color: transparent;
-    z-index: 10;
     max-width: 530px;
     margin: auto;
     cursor: pointer;

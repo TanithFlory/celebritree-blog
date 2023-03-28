@@ -4,8 +4,14 @@ import HorizontalCarousel from "../Carousel/HorizontalCarousel/HorizontalCarouse
 import ArticleNavigation from "../Articles/Navigation/ArticleNavigation";
 import Pagebreak from "../UI/Pagebreak";
 import { motion } from "framer-motion";
+import scrollTop from "../UI/scrollTop";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    scrollTop();
+  }, [scrollTop]);
+
   const topDown = {
     initial: {
       opacity: 0,
@@ -31,7 +37,7 @@ const Home = () => {
       transition: {
         ease: "easeIn",
         duration: 1,
-        delay: 0.5
+        delay: 0.5,
       },
     },
   };

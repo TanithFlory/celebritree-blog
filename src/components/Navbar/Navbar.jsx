@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import images from "../constants/images";
 import SNav from "./Navbar.styles";
 import { motion } from "framer-motion";
-
+import scrollTop from "../UI/scrollTop";
 const Navbar = () => {
   const topDown = {
     initial: {
@@ -18,15 +18,20 @@ const Navbar = () => {
       },
     },
   };
-
+  const scrollHandler = () => {
+    const articleList = document.getElementById("article-list");
+    if (articleList) {
+      articleList.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  };
   return (
     <SNav>
       <motion.ul animate="animate" initial="initial" variants={topDown}>
         <Link to="/">
-          <li>Home</li>
+          <li onClick={() => scrollTop()}>Home</li>
         </Link>
         <img src={images.logo} alt="logo" />
-        <li>Articles</li>
+        <li onClick={scrollHandler}>Articles</li>
       </motion.ul>
     </SNav>
   );

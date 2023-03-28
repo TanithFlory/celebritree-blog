@@ -38,7 +38,7 @@ const ArticleNavigation = () => {
     margin: "-160px",
     once: true,
   });
-  
+
   useEffect(() => {
     if (visible) {
       controls.start({
@@ -58,7 +58,7 @@ const ArticleNavigation = () => {
     };
   }, [controls, list, visible]);
   return (
-    <SNavigation>
+    <SNavigation id="article-list">
       <div>
         <a
           onClick={() => setList("latest")}

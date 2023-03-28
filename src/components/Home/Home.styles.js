@@ -14,6 +14,17 @@ const SHome = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin: 1rem 0 0;
+    .react-multiple-carousel__arrow,
+    .react-multiple-carousel__arrow {
+      background: rgba(255, 255, 255, 0.6);
+      &::before {
+        color: var(--clr-black);
+        font-weight: 700;
+      }
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
   }
 
   @media screen and (max-width: 912px) {

@@ -7,8 +7,10 @@ import Pagebreak from "../../UI/Pagebreak";
 import ArticleHighlights from "./ArticleHighlights";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
-
+import { motion } from "framer-motion";
+import scrollTop from "../../UI/scrollTop";
 const ArticlePreview = () => {
+  scrollTop();
   const { title, tag } = useParams();
   const [article, setArticle] = useState();
   const [highlights, setHighlights] = useState();
@@ -36,14 +38,18 @@ const ArticlePreview = () => {
   return (
     <SArticlePreview>
       <div>img</div>
-      <div>
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ ease: "easeIn", duration: 0.6 }}
+      >
         <ArticleHighlights highlights={highlights} />
         <div className="article__content">
           {parse(article === undefined ? " " : article)}
           <Pagebreak margin="0 0 3rem" />
         </div>
         <Introduction />
-      </div>
+      </motion.div>
     </SArticlePreview>
   );
 };

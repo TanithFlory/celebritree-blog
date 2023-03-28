@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
     margin: 10px 0 0;
     text-align: center;
   }
-  
+
   @media screen and (max-width: 911px) and (min-width: 550px) {
     width: 60%;
     margin: auto;

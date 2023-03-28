@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import styled from "styled-components";
 import images from "../constants/images";
 import Newsletter from "./Newsletter";
 import {
@@ -8,48 +7,13 @@ import {
   AiFillFacebook,
 } from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
-const SFooter = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin: 1rem;
-  min-height: 200px;
-  & > :nth-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    svg {
-      transform: scale(2);
-      cursor: pointer;
-      &:hover {
-        fill: var(--clr-cyan);
-      }
-    }
-    & > :nth-child(2) {
-      display: flex;
-      gap: 2rem;
-    }
-  }
-  & > :last-child {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  img {
-    width: 100px;
-    aspect-ratio: 1/1;
-  }
-  a {
-    text-decoration: none;
-  }
-`;
+import SFooter from "./Footer.styles";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const ref = useRef();
   const visible = useInView(ref, {
-    margin: "200px",
+    margin: "-100px",
     once: true,
   });
   const stagger = {
@@ -104,8 +68,8 @@ const Footer = () => {
             transition={{ ease: "easeIn", delay: 0.5, duration: 0.5 }}
             initial={{ opacity: 0 }}
           >
-            <a href="#">Privacy Policy</a>
-            <a href="#">Credits</a>
+            <Link>Celebritree</Link>
+            <Link to="/credits">Credits</Link>
           </motion.div>
         </>
       )}

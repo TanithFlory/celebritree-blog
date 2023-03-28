@@ -5,19 +5,18 @@ import { FaChevronCircleUp, FaChevronCircleDown } from "react-icons/fa";
 
 const VerticalCarousel = () => {
   const [carouselRef, setCarouselRef] = useState();
-
+  const [disable, setDisable] = useState(false);
   const scroll = (type) => {
+    setDisable(true);
+    const { offsetHeight, scrollTop, scrollHeight } = carouselRef;
     if (type === "down") {
-      if (
-        carouselRef.offsetHeight + carouselRef.scrollTop >=
-        carouselRef.scrollHeight
-      ) {
+      if (offsetHeight + scrollTop >= scrollHeight) {
         return carouselRef.scrollTo(0, 0);
       }
       carouselRef.scrollBy({ top: 141, behavior: "smooth" });
     } else {
-      if (Math.floor(carouselRef.scrollTop) === 0) {
-        return carouselRef.scrollTo(0, carouselRef.scrollHeight);
+      if (Math.floor(scrollTop) === 0) {
+        return carouselRef.scrollTo(0, scrollHeight);
       }
       carouselRef.scrollBy({ top: -141, behavior: "smooth" });
     }
@@ -25,17 +24,19 @@ const VerticalCarousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      scroll();
+      scroll("down");
     }, 5000);
-
+    const interval2 = setTimeout(() => {
+      setDisable(false);
+    }, 300);
     return () => {
       clearInterval(interval);
+      clearInterval(interval2);
     };
-  }, [scroll]);
-
+  }, [scroll, disable]);
   return (
     <SVerticalCarousel>
-      <div className="buttons" onClick={() => scroll("up")}>
+      <div className="buttons" onClick={() => (disable ? null : scroll("up"))}>
         <button className="up">
           <FaChevronCircleUp />
         </button>
@@ -53,7 +54,10 @@ const VerticalCarousel = () => {
           );
         })}
       </div>
-      <div className="buttons" onClick={() => scroll("down")}>
+      <div
+        className="buttons"
+        onClick={() => (disable ? null : scroll("down"))}
+      >
         <button className="down">
           <FaChevronCircleDown />
         </button>
