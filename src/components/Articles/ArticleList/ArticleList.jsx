@@ -2,10 +2,8 @@ import axios from "axios";
 import SArticle from "./ArticleList.styles";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 const ArticleList = (props) => {
   const [articleData, setArticleData] = useState(null);
-
   useEffect(() => {
     const controller = new AbortController();
     (async () => {
@@ -17,7 +15,6 @@ const ArticleList = (props) => {
         },
         signal: controller.signal,
       });
-      console.log(response);
       setArticleData(response.data?.items);
     })();
     return () => {

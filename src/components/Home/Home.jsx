@@ -1,55 +1,58 @@
-import styled from "styled-components";
+import SHome from "./Home.styles";
 import VerticalCarousel from "../Carousel/VerticalCarousel/VerticalCarousel";
 import HorizontalCarousel from "../Carousel/HorizontalCarousel/HorizontalCarousel";
 import ArticleNavigation from "../Articles/Navigation/ArticleNavigation";
 import Pagebreak from "../UI/Pagebreak";
-const StyledDiv = styled.div`
-  display: grid;
-  grid-template-rows: 80px 1fr;
-  margin: 6rem 6rem 0;
-  h1 {
-    text-align: center;
-    font-size: var(--fs-custom);
-    margin: 0;
-  }
-  .home__carousels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin: 1rem 0 0;
-  }
-
-  @media screen and (max-width: 912px) {
-    margin: 6rem 1rem 0;
-    h1 {
-      font-size: var(--fs-xxl);
-    }
-    .home__carousels {
-      grid-template-columns: 1fr;
-      margin-top: 0;
-    }
-    .carousel {
-      img {
-        max-width: 125px;
-      }
-      div {
-        height: 123px;
-      }
-    }
-  }
-`;
+import { motion } from "framer-motion";
 
 const Home = () => {
+  const topDown = {
+    initial: {
+      opacity: 0,
+      y: -50,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeIn",
+        duration: 0.6,
+        delay: 0.35,
+      },
+    },
+  };
+
+  const fade = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        ease: "easeIn",
+        duration: 1,
+        delay: 0.5
+      },
+    },
+  };
+
   return (
-    <StyledDiv>
-      <h1>CELEBRITREE</h1>
-      <div className="home__carousels">
+    <SHome>
+      <motion.h1 variants={topDown} initial="initial" animate="animate">
+        CELEBRITREE
+      </motion.h1>
+      <motion.div
+        animate="animate"
+        initial="initial"
+        variants={fade}
+        className="home__carousels"
+      >
         <HorizontalCarousel />
         <VerticalCarousel />
-      </div>
+      </motion.div>
       <Pagebreak margin="3rem 0 2rem" />
       <ArticleNavigation />
-    </StyledDiv>
+    </SHome>
   );
 };
 

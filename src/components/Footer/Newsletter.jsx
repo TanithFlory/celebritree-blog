@@ -47,7 +47,6 @@ const Newsletter = () => {
         initial={{ opacity: 0, width: 0 }}
         whileInView={{ opacity: 1, width: "100%" }}
         transition={{ type: "ease", stiffness: 100, duration: 1 }}
-        viewport={{ once: true }}
         type="text"
         placeholder="Enter Email-ID"
       />

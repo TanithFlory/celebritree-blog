@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import ArticleList from "../ArticleList/ArticleList";
 import { MdOutlineFiberNew, MdTrendingUp } from "react-icons/md";
+import { motion, useAnimation, useInView } from "framer-motion";
+
 const SNavigation = styled.div`
   margin-top: 10px;
   & > div:first-child {
@@ -29,7 +31,32 @@ const SNavigation = styled.div`
 `;
 
 const ArticleNavigation = () => {
+  const controls = useAnimation();
   const [list, setList] = useState("latest");
+  const ref = useRef();
+  const visible = useInView(ref, {
+    margin: "-160px",
+    once: true,
+  });
+  
+  useEffect(() => {
+    if (visible) {
+      controls.start({
+        opacity: 1,
+        transition: {
+          ease: "easeInOut",
+          duration: 0.9,
+        },
+      });
+    }
+    return () => {
+      if (ref.current) {
+        controls.set({
+          opacity: 0,
+        });
+      }
+    };
+  }, [controls, list, visible]);
   return (
     <SNavigation>
       <div>
@@ -49,7 +76,14 @@ const ArticleNavigation = () => {
           Trending
         </a>
       </div>
-      <ArticleList list={list} />
+      <motion.div
+        id="articleList"
+        animate={controls}
+        ref={ref}
+        initial={{ opacity: 0 }}
+      >
+        <ArticleList list={list} />
+      </motion.div>
     </SNavigation>
   );
 };
