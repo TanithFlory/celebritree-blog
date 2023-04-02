@@ -8,7 +8,7 @@ import ArticleHighlights from "./ArticleHighlights";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import { motion } from "framer-motion";
-import scrollTop from "../../UI/scrollTop";
+import scrollTop from "../../Utils/scrollTop";
 const ArticlePreview = () => {
   scrollTop();
   const { title, tag } = useParams();

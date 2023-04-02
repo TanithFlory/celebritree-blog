@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import images from "../constants/images";
 import SNav from "./Navbar.styles";
 import { motion } from "framer-motion";
-import scrollTop from "../UI/scrollTop";
+import scrollTop from "../Utils/scrollTop";
 const Navbar = () => {
   const topDown = {
     initial: {

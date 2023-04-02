@@ -4,7 +4,7 @@ import HorizontalCarousel from "../Carousel/HorizontalCarousel/HorizontalCarouse
 import ArticleNavigation from "../Articles/Navigation/ArticleNavigation";
 import Pagebreak from "../UI/Pagebreak";
 import { motion } from "framer-motion";
-import scrollTop from "../UI/scrollTop";
+import scrollTop from "../Utils/scrollTop";
 import { useEffect } from "react";
 
 const Home = () => {

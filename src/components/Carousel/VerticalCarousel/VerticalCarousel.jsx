@@ -6,7 +6,9 @@ import { FaChevronCircleUp, FaChevronCircleDown } from "react-icons/fa";
 const VerticalCarousel = () => {
   const [carouselRef, setCarouselRef] = useState();
   const [disable, setDisable] = useState(false);
+  let interval;
   const scroll = (type) => {
+    clearInterval(interval);
     setDisable(true);
     const { offsetHeight, scrollTop, scrollHeight } = carouselRef;
     if (type === "down") {
@@ -23,12 +25,12 @@ const VerticalCarousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       scroll("down");
     }, 5000);
     const interval2 = setTimeout(() => {
       setDisable(false);
-    }, 300);
+    }, 400);
     return () => {
       clearInterval(interval);
       clearInterval(interval2);

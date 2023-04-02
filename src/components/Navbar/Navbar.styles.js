@@ -38,10 +38,10 @@ const SNav = styled.nav`
         bottom: 0;
       }
       &::before {
-        left: 0;
+        left: 50%;
       }
       &::after {
-        right: 0;
+        right: 50%;
       }
       &:hover {
         &::before,
